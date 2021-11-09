@@ -97,10 +97,10 @@ b = [0., 0., 0.]
 V = [[random.gauss(0,1), random.gauss(0,1)], [random.gauss(0,1), random.gauss(0,1)], [random.gauss(0,1), random.gauss(0,1)]]
 c = [0., 0.]
 
-alpha = 0.025
+alpha = 0.05
 losses_mean = []
 steps_at_losses = []
-steps = 100000
+steps = 20000
 for step in range(steps):
     
     i = random.randrange(0, len(xtrain))
@@ -120,6 +120,10 @@ for step in range(steps):
     for i in range(len(c)):
         c[i] -= alpha * dc[i]
 
+    losses_mean.append(loss)
+    steps_at_losses.append(step)
+
+    """
     if ((step % 1000) == 0):
         losses = []
         for i in range(5000):
@@ -128,6 +132,7 @@ for step in range(steps):
             losses.append(loss)
         losses_mean.append(sum(losses)/len(losses))
         steps_at_losses.append(step)
+    """
 
 seaborn.set()
 plt.plot(steps_at_losses, losses_mean)

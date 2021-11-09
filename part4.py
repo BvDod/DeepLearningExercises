@@ -64,15 +64,14 @@ rows = np.arange(len(ytest))
 Y_test_hot[rows, ytest] = 1
 
 alpha = 0.001
-batch_size = 5
-
+batch_size = 512
 losses = []
 accuracies = []
 
 val_losses = []
 val_accuracies = []
 steps_at_losses = []
-epochs = 5
+epochs = 1
 
 step = 0
 for epoch in range(epochs):
